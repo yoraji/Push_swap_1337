@@ -22,7 +22,7 @@ int	is_sign(char c)
 	return (c == '+' || c == '-');
 }
 
-int	nb_cmp(const char *s1, const char *s2)
+int	compare_num(const char *s1, const char *s2)
 {
 	int	i;
 	int	j;

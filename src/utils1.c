@@ -12,33 +12,49 @@
 
 #include "../push_swap.h"
 
-int is_space(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r');
-}
-
 char	*ft_strdup(const char *s)
 {
-	char*	dup;
-	size_t len;
+	char	*dup;
+	size_t	len;
 
 	len = strlen(s);
 	dup = malloc(len + 1);
 	if (!dup)
-		return NULL;
+		return (NULL);
 	strcpy(dup, s);
 	return (dup);
 }
 
-int is_empty(char *av)
+void	free_stack(t_list **stack_a, t_list **stack_b)
 {
-	if (!av || !*av)
-		return (1);
-	while (*av)
+	t_list	*tmp;
+
+	if (stack_a)
 	{
-		if (*av != ' ')
-			return (0);
-		av++;
+		while (*stack_a)
+		{
+			tmp = (*stack_a)->next;
+			free(*stack_a);
+			*stack_a = tmp;
+		}
 	}
-	return (1);
+	if (stack_b)
+	{
+		while (*stack_b)
+		{
+			tmp = (*stack_b)->next;
+			free(*stack_b);
+			*stack_b = tmp;
+		}
+	}
+}
+
+void	exit_error(t_list **stack_a, t_list **stack_b)
+{
+	if (!stack_a || *stack_a)
+		free_stack_1(stack_a);
+	if (!stack_b || *stack_b)
+		free_stack_1(stack_b);
+	write(2, "Error\n", 6);
+	exit(1);
 }

@@ -17,7 +17,7 @@ int	cheack_arg(char *arg)
 	int	i;
 
 	i = 0;
-	if (is_sign(arg[i]) && arg[i + 1] != '\0')
+	if (is_sign(arg[i]))
 		i++;
 	while (arg[i] && is_digit(arg[i]))
 		i++;
@@ -66,13 +66,13 @@ static int	is_duplicates(char **av)
 	{
 		j = 0;
 		while (av[++j])
-			if (j != i && !nb_cmp(av[i], av[j]))
+			if (j != i && !compare_num(av[i], av[j]))
 				return (1);
 	}
 	return (0);
 }
 
-int	is_corr_inp(char **av)
+int	cheack_input(char **av)
 {
 	int	i;
 	int	zero;

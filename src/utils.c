@@ -12,17 +12,6 @@
 
 #include "../push_swap.h"
 
-int	is_empty_const(const char *str)
-{
-	while (*str)
-	{
-		if (!is_space((unsigned char)*str))
-			return 0;
-		str++;
-	}
-	return 1;
-}
-
 void	free_stack_1(t_list **stack)
 {
 	t_list	*tmp;
@@ -37,16 +26,6 @@ void	free_stack_1(t_list **stack)
 	}
 	*stack = NULL;
 }
-
-// void	exit_error(t_list **stack_a, t_list **stack_b)
-// {
-// 	if (stack_a && *stack_a)
-// 		free_stack(stack_a,NULL);
-// 	if (stack_b && *stack_b)
-// 		free_stack(NULL,stack_b);
-// 	write(1,"Error\n", 6);
-// 	exit(1);
-// }
 
 int	nb_abs(int nb)
 {
@@ -68,10 +47,7 @@ char	**fill_tab(char **av, int *size, int ac)
 	while (av[i])
 	{
 		if (is_empty(av[i]))
-		{
 			exit_error(NULL, NULL);
-			printf("Hello	\n");
-		}
 		join = ft_strjoin(join, av[i]);
 		i++;
 	}

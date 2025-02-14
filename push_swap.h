@@ -66,12 +66,12 @@ void		rotate(t_list **stack, char *str);
 void		rr(t_list **stack_a, t_list **stack_b);
 void		rrotate(t_list **stack, char *str);
 void		rrr(t_list **stack_a, t_list **stack_b);
-int			is_corr_inp(char **av);
+int			cheack_input(char **av);
 int			is_empty(char *av);
 int			is_digit(char c);
 int			is_sign(char c);
 void		print_stack(t_list	*stack_a);
-int			nb_cmp(const char *s1, const char *s2);
+int			compare_num(const char *s1, const char *s2);
 char		*ft_strdup(const char *s);
 int			is_space(char c);
 #endif

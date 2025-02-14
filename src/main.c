@@ -12,40 +12,6 @@
 
 #include "../push_swap.h"
 
-void free_stack(t_list **stack_a, t_list **stack_b)
-{
-    t_list *tmp;
-
-    if (stack_a)
-    {
-        while (*stack_a)
-        {
-            tmp = (*stack_a)->next;
-            free(*stack_a);
-            *stack_a = tmp;
-        }
-    }
-    if (stack_b)
-    {
-        while (*stack_b)
-        {
-            tmp = (*stack_b)->next;
-            free(*stack_b);
-            *stack_b = tmp;
-        }
-    }
-}
-
-void exit_error(t_list **stack_a, t_list **stack_b)
-{
-    if (stack_a && *stack_a)
-        free_stack(stack_a, NULL);
-    if (stack_b && *stack_b)
-        free_stack(NULL, stack_b);
-    write(1, "Error\n", 6);
-    exit(1);
-}
-
 int	is_sorted(t_list *stack)
 {
 	while (stack->next)
@@ -127,14 +93,13 @@ int	main(int ac, char **av)
 	char	**tab;
 
 	tab = fill_tab(av, &size, ac);
-	if (!is_corr_inp(tab))
+	if (!cheack_input(tab))
 		exit_error(NULL, NULL);
 	stack_a = fill_stack_content(size, tab);
 	stack_b = NULL;
 	size = ft_stack_size(stack_a);
 	assign_index(stack_a, size + 1);
 	push_swap(&stack_a, &stack_b, size);
-	print_stack(stack_a);
 	free_stack_1(&stack_a);
 	free_stack_1(&stack_b);
 }
