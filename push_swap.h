@@ -74,4 +74,6 @@ void		print_stack(t_list	*stack_a);
 int			compare_num(const char *s1, const char *s2);
 char		*ft_strdup(const char *s);
 int			is_space(char c);
+void		free_split(char **split);
+
 #endif

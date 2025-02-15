@@ -100,6 +100,7 @@ int	main(int ac, char **av)
 	size = ft_stack_size(stack_a);
 	assign_index(stack_a, size + 1);
 	push_swap(&stack_a, &stack_b, size);
+	free_split(tab);
 	free_stack_1(&stack_a);
 	free_stack_1(&stack_b);
 }
