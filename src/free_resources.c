@@ -65,44 +65,6 @@ static char	*word_dup(char *str, int start, int end)
 	return (word);
 }
 
-char	**join(int argc, char **argv, int *size)
-{
-	char	*join_str;
-	char	**tab;
-	char	*temp_space;
-	char	*temp;
-	int		i;
-
-	join_str = ft_strdup("");
-	if (!join_str)
-		exit_error(NULL, NULL);
-	i = 1;
-	while (i < argc)
-	{
-		if (is_empty(argv[i]))
-			exit_error(NULL, NULL);
-		if (join_str[0] != '\0')
-		{
-			temp_space = ft_strjoin(join_str, " ");
-			free(join_str);
-			join_str = temp_space;
-			if (!join_str)
-				exit_error(NULL, NULL);
-		}
-		temp = ft_strjoin(join_str, argv[i]);
-		free(join_str);
-		join_str = temp;
-		if (!join_str)
-			exit_error(NULL, NULL);
-		i++;
-	}
-	tab = ft_split(join_str, ' ', size);
-	free(join_str);
-	if (!tab)
-		exit_error(NULL, NULL);
-	return (tab);
-}
-
 int	ft_atoi(const char *str)
 {
 	long int	nb;
