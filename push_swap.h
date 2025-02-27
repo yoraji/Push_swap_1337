@@ -75,5 +75,6 @@ int			compare_num(const char *s1, const char *s2);
 char		*ft_strdup(const char *s);
 int			is_space(char c);
 void		free_split(char **split);
-
+void		exit_error__(void);
+void		free_tab(char **tab);
 #endif

@@ -21,3 +21,26 @@ void	print_stack(t_list	*stack_a)
 	}
 	printf("NULL\n");
 }
+
+void	exit_error__(void)
+{
+	write(2, "Error\n", 6);
+
+	exit(0);
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+	if (!tab)
+		return ;
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	free(tab);
+	tab = NULL;
+}

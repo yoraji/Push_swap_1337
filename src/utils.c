@@ -42,13 +42,23 @@ char	**fill_tab(char **av, int *size, int ac)
 
 	i = 1;
 	join = ft_strdup("");
+	if(!join)
+		free(join);
 	if (av[i] == NULL || ac <= 1)
 		exit(0);
 	while (av[i])
 	{
 		if (is_empty(av[i]))
+		{
+			free(join);
 			exit_error(NULL, NULL);
+		}
 		join = ft_strjoin(join, av[i]);
+		if (!join)
+		{
+			free(join);
+			exit_error(NULL, NULL);
+		}
 		i++;
 	}
 	tab = ft_split(join, ' ', size);

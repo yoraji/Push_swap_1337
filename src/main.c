@@ -46,7 +46,10 @@ t_list	*fill_stack_content(int ac, char **av)
 	{
 		nb = ft_atoi(av[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
-			exit_error(NULL, NULL);
+		{
+			free_tab(av);
+			exit_error(&stack_a, NULL);
+		}
 		if (i == 0)
 			stack_a = stack_new((int)nb);
 		else
@@ -85,22 +88,29 @@ void	assign_index(t_list *stack_a, int size)
 	}
 }
 
-int	main(int ac, char **av)
+int    main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		size;
-	char	**tab;
+    t_list    *stack_a;
+    t_list    *stack_b;
+    int        size;
+    char    **tab;
 
-	tab = fill_tab(av, &size, ac);
-	if (!cheack_input(tab))
-		exit_error(NULL, NULL);
-	stack_a = fill_stack_content(size, tab);
-	stack_b = NULL;
-	size = ft_stack_size(stack_a);
-	assign_index(stack_a, size + 1);
-	push_swap(&stack_a, &stack_b, size);
-	free_split(tab);
-	free_stack_1(&stack_a);
-	free_stack_1(&stack_b);
+    if (argc < 2)
+        exit_error__();
+    tab = fill_tab(argv, &size, argc);
+    if (!cheack_input(tab))
+        exit_error(NULL, NULL);
+    stack_a = fill_stack_content(size, tab);
+    stack_b = NULL;
+    if (cheack_input(tab) == 0)
+    {
+        exit_error(NULL, NULL);
+        return (0);
+    }
+    size = ft_stack_size(stack_a);
+    assign_index(stack_a, size + 1);
+    push_swap(&stack_a, &stack_b, size);
+    free_stack_1(&stack_a);
+    free_tab(tab);
+    free_stack_1(&stack_b);
 }
