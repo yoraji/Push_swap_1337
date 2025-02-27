@@ -88,29 +88,29 @@ void	assign_index(t_list *stack_a, int size)
 	}
 }
 
-int    main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_list    *stack_a;
-    t_list    *stack_b;
-    int        size;
-    char    **tab;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		size;
+	char	**tab;
 
-    if (argc < 2)
-        exit_error__();
-    tab = fill_tab(argv, &size, argc);
-    if (!cheack_input(tab))
-        exit_error(NULL, NULL);
-    stack_a = fill_stack_content(size, tab);
-    stack_b = NULL;
-    if (cheack_input(tab) == 0)
-    {
-        exit_error(NULL, NULL);
-        return (0);
-    }
-    size = ft_stack_size(stack_a);
-    assign_index(stack_a, size + 1);
-    push_swap(&stack_a, &stack_b, size);
-    free_stack_1(&stack_a);
-    free_tab(tab);
-    free_stack_1(&stack_b);
+	if (argc < 2)
+		exit(0);
+	tab = fill_tab(argv, &size, argc);
+	if (!cheack_input(tab))
+		exit_error(NULL, NULL);
+	stack_a = fill_stack_content(size, tab);
+	stack_b = NULL;
+	if (cheack_input(tab) == 0)
+	{
+		exit_error(NULL, NULL);
+		return (0);
+	}
+	size = ft_stack_size(stack_a);
+	assign_index(stack_a, size + 1);
+	push_swap(&stack_a, &stack_b, size);
+	free_stack_1(&stack_a);
+	free_tab(tab);
+	free_stack_1(&stack_b);
 }

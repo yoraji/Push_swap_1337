@@ -44,3 +44,26 @@ void	free_tab(char **tab)
 	free(tab);
 	tab = NULL;
 }
+
+long	ft_atol(const char *str)
+{
+	long int	nb;
+	int			sign;
+
+	nb = 0;
+	sign = 1;
+	while (is_space((int)*str))
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign = (-1);
+		str++;
+	}
+	while (is_digit((int)*str))
+	{
+		nb = nb * 10 + *str - '0';
+		str++;
+	}
+	return (sign * nb);
+}

@@ -77,4 +77,5 @@ int			is_space(char c);
 void		free_split(char **split);
 void		exit_error__(void);
 void		free_tab(char **tab);
+long		ft_atol(const char *str);
 #endif
