@@ -42,28 +42,21 @@ char	**fill_tab(char **av, int *size, int ac)
 
 	i = 1;
 	join = ft_strdup("");
-	if(!join)
+	if (!join)
 		free(join);
 	if (av[i] == NULL || ac <= 1)
 		exit(0);
 	while (av[i])
 	{
 		if (is_empty(av[i]))
-		{
-			free(join);
-			exit_error(NULL, NULL);
-		}
+			return (free(join), exit_error(NULL, NULL), NULL);
 		join = ft_strjoin(join, av[i]);
 		if (!join)
-		{
-			free(join);
-			exit_error(NULL, NULL);
-		}
+			return (free(join), exit_error(NULL, NULL), NULL);
 		i++;
 	}
 	tab = ft_split(join, ' ', size);
-	free(join);
-	return (tab);
+	return (free(join), tab);
 }
 
 long int	ft_atoi(const char *str)

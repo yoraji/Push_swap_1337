@@ -72,32 +72,22 @@ static int	is_duplicates(char **av)
 	return (0);
 }
 
-int    cheack_input(char **av)
+int	cheack_input(char **av)
 {
-    int    i;
-    int    zero;
+	int	i;
+	int	zero;
 
-    i = -1;
-    zero = 0;
-    if (is_duplicates(av))
-    {
-		free_tab(av);
-        exit_error(NULL, NULL);
-    }
-    while (av[++i])
-    {
-        if (!cheack_arg(av[i]))
-        {
-            free_tab(av);
-			exit_error(NULL, NULL);
-            return (0);
-        }
-        zero += cheack_zero(av[i]);
-    }
-    if (zero > 1)
-    {
-        exit_error(NULL, NULL);
-        return (0);
-    }
-    return (1);
+	i = -1;
+	zero = 0;
+	if (is_duplicates(av))
+		return (free_tab(av), exit_error(NULL, NULL), 0);
+	while (av[++i])
+	{
+		if (!cheack_arg(av[i]))
+			return (free_tab(av), exit_error(NULL, NULL), 0);
+		zero += cheack_zero(av[i]);
+	}
+	if (zero > 1)
+		return (free_tab(av), exit_error(NULL, NULL), 0);
+	return (1);
 }
